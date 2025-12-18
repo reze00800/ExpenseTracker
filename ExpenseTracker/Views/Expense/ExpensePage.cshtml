@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Balance";
+}
+@model List<Expense>
+
+<div class="text-center">
+    <h1 class="display-4">Balance</h1>
+    <br />
+    <h2>Total Balance $ @ViewBag.TotalBalance</h2>
+     <br />
+    <table class="table">
+        <thead>
+            <tr>
+                @* <th>Id</th> *@
+                <th>Title</th>
+                <th>Amount $</th>
+                <th>Date</th>
+                <th>Action</th>
+                
+            </tr>
+        </thead>
+ 
+        <tbody>
+             @foreach (var item in Model)
+               {
+                   <tr>
+                       @* <td>@item.Id</td> *@
+                       <td>@item.Title</td>
+                       <td>@item.Amount</td>
+                       <td>@item.Date.ToShortDateString()</td>
+                       <td>
+                       <a asp-action="CreateOrEdit" asp-route-id="@item.Id">Edit</a>
+                       <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                       </td>
+                       
+                   </tr>
+               } 
+        </tbody>
+    </table>
+</div>
